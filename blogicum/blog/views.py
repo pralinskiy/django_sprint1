@@ -44,6 +44,7 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
+posts_op = {0:posts[0], 1:posts[1], 2:posts[2]}
 
 
 def index(request):
@@ -52,12 +53,9 @@ def index(request):
     return render(request, template, context)
 
 
-def new_posts(): return;
-
-
 def post_detail(request, id):
     template = 'blog/detail.html'
-    post = new_posts.get(id)
+    post = posts_op.get(id)
     if post is None:
         raise Http404(f'пост с id {id} не найден')
     context = {
